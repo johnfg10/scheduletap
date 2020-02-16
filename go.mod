@@ -1,4 +1,4 @@
-module github.io/johnfg10/scheduletap
+module github.com/johnfg10/scheduletap
 
 go 1.13
 
