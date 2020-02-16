@@ -1,4 +1,4 @@
-package shiftmodels
+package main
 
 import (
 	"time"
