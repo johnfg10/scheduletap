@@ -62,7 +62,6 @@ func main() {
 			} else {
 				app.Logger().Debug(shift)
 				ctx.JSON(shift)
-				return
 			}
 		}
 	})
@@ -83,7 +82,7 @@ func main() {
 			return
 		}
 
-		err = client.Create(ctx.Request().Context(), &shift_models.Shift{ID: strconv.FormatUint(id, 10), Name: "Test"})
+		err = client.Create(ctx.Request().Context(), &shiftmodels.Shift{ID: strconv.FormatUint(id, 10), Name: "Test"})
 		if err != nil {
 			app.Logger().Error(err)
 			ctx.JSON(iris.Map{"message": "failed"})

@@ -1,6 +1,8 @@
 package sharedmodels
 
-// OfficeLocation a
+// OfficeLocation is a struct repusenting the location of the office/site
 type OfficeLocation struct {
-	Address string `json:"address"`
+	ID               string      `json:"id"`
+	Address          string      `json:"address"`
+	DocstoreRevision interface{} `json:"-"`
 }
