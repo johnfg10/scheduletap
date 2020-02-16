@@ -3,8 +3,8 @@ package main
 import (
 	"io"
 	"strconv"
-	"time"
 
+	"github.com/johnfg10/scheduletap/internal/shiftmodels"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"
 	"github.com/kataras/iris/middleware/recover"
@@ -46,7 +46,8 @@ func main() {
 		iter := client.Query().Where("Name", "=", "Test").Get(ctx.Request().Context())
 
 		for {
-			var shift Shift
+
+			var shift shiftmodels.Shift
 			err := iter.Next(ctx.Request().Context(), &shift)
 			if err == io.EOF {
 				app.Logger().Debug("end of file")
@@ -82,7 +83,7 @@ func main() {
 			return
 		}
 
-		err = client.Create(ctx.Request().Context(), &Shift{ID: strconv.FormatUint(id, 10), Name: "Test"})
+		err = client.Create(ctx.Request().Context(), &shift_models.Shift{ID: strconv.FormatUint(id, 10), Name: "Test"})
 		if err != nil {
 			app.Logger().Error(err)
 			ctx.JSON(iris.Map{"message": "failed"})
@@ -93,34 +94,4 @@ func main() {
 	})
 
 	app.Run(iris.Addr(":8080"))
-}
-
-type OfficeLocation struct {
-	Address string `json:"address"`
-}
-
-type Company struct {
-	ID       string `json:"id"`
-	Name     string `json:"name"`
-	Location string `json:"location"`
-}
-
-// Shift s
-type Shift struct {
-	ID               string         `json:"id"`
-	Name             string         `json:"name"`
-	Location         OfficeLocation `json:"location"`
-	StartTime        time.Time      `json:"start_time"`
-	Duration         time.Duration  `json:"duration"`
-	DocstoreRevision interface{}    `json:"-"`
-}
-
-type Position struct {
-	ID               string        `json:"id"`
-	Company          Company       `json:"company"`
-	Name             string        `json:"name"`
-	Description      string        `json:"description"`
-	StartTime        time.Time     `json:"start_time"`
-	Duration         time.Duration `json:"duration"`
-	DocstoreRevision interface{}   `json:"-"`
 }

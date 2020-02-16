@@ -1,5 +1,6 @@
-package github.com/johnfg10/scheduletap/internal/shared_models
+package sharedmodels
 
+// Company is a struct representing a company
 type Company struct {
 	ID       string `json:"id"`
 	Name     string `json:"name"`
