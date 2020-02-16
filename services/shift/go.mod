@@ -1,4 +1,4 @@
-module github.io/johnfg10/scheduletap/services/shift
+module github.com/johnfg10/scheduletap/services/shift
 
 go 1.13
 
@@ -16,15 +16,9 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sony/sonyflake v1.0.0
-	github.io/johnfg10/scheduletap/internal/shared_models v0.0.0
-	github.io/johnfg10/scheduletap/internal/shift_models v0.0.0
 	gocloud.dev v0.19.0
 	gocloud.dev/docstore/mongodocstore v0.19.0
 	golang.org/x/sys v0.0.0-20200212091648-12a6c2dcc1e4 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
-
-replace github.io/johnfg10/scheduletap/internal/shift_models v0.0.0 => ../../internal/shift_models
-
-replace github.io/johnfg10/scheduletap/internal/shared_models v0.0.0 => ../../internal/shared_models

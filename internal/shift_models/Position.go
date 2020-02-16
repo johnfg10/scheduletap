@@ -1,4 +1,4 @@
-
+package github.com/johnfg10/scheduletap/internal/shift_models
 type Position struct {
 	ID               string        `json:"id"`
 	Company          Company       `json:"company"`

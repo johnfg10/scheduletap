@@ -1,4 +1,4 @@
-package github.io/johnfg10/scheduletap/internal/shift_models
+package github.com/johnfg10/scheduletap/internal/shift_models
 
 type Shift struct {
 	ID               string         `json:"id"`
