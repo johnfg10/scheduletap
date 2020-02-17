@@ -48,3 +48,28 @@ func FinnishOnError(ctx iris.Context, err error, statuscodeOptional int) bool {
 	}
 	return false
 }
+
+// FinnishOnErrorDebug finnishes the current request with a json error message and debug log
+func FinnishOnErrorDebug(ctx iris.Context, err error, statuscodeOptional int) bool {
+	if IsErrorPresent(err) {
+		ctx.Application().Logger().Debug(err)
+		var resp APIResponse
+
+		if sendPrivateDetails {
+			resp = NewErrorResponse(err.Error())
+		} else {
+			resp = NewErrorResponse("Error details have been logged in the application logger")
+		}
+
+		ctx.JSON(&resp)
+
+		if statuscodeOptional != 0 {
+			ctx.StatusCode(statuscodeOptional)
+		} else {
+			ctx.StatusCode(500)
+		}
+
+		return true
+	}
+	return false
+}
