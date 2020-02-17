@@ -1,4 +1,4 @@
-module github.com/johnfg10/pkg/irisextensions
+module github.com/johnfg10/scheduletap/pkg/irisextensions
 
 go 1.13
 
